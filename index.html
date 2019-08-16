@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>徐氏天气预报</title>
+<h1 align="center">徐氏天气预报--30年祖传天气预报</h1>
+
+<a href="http://hk.xuniubi.top">监测到您访问的是海外版网站，点我访问香港版</a>
+
+<table>
+  <tR>
+  <td><iframe width="800" height="100" scrolling="no" height="120" frameborder="0" allowtransparency="true" src="//i.tianqi.com/index.php?c=code&id=19&icon=1&temp=1&num=5&site=12"></iframe></td>
+  <tD><iframe name="weather_inc" src="https://i.tianqi.com/index.php?c=code&id=111" width="1200" height="100" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></td>
+  </tR>
+  </table>
+  
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=qixSpYzunOrSBZoGyNVBiIggTaGkUgju"></script>
+</head>
+
+<body>
+    <!--百度地图容器-->
+    <table>
+      <tR>
+      <td><div style="width:700px;height:550px;border:#ccc solid 1px;font-size:12px" id="map"></div></td>
+      <tD><iframe name="weather_inc" src="https://i.tianqi.com/index.php?c=code&id=57" width="700" height="550" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></td>
+      </tR>
+      </table>
+    
+  </body>
+  <script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap(){
+      createMap();//创建地图
+      setMapEvent();//设置地图事件
+      addMapControl();//向地图添加控件
+      addMapOverlay();//向地图添加覆盖物
+    }
+    function createMap(){ 
+      map = new BMap.Map("map"); 
+      map.centerAndZoom(new BMap.Point(121.506377,31.245105),15);
+    }
+    function setMapEvent(){
+      map.enableScrollWheelZoom();
+      map.enableKeyboard();
+      map.enableDragging();
+      map.enableDoubleClickZoom()
+    }
+    function addClickHandler(target,window){
+      target.addEventListener("click",function(){
+        target.openInfoWindow(window);
+      });
+    }
+    function addMapOverlay(){
+    }
+    //向地图添加控件
+    function addMapControl(){
+      var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+      scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+      map.addControl(scaleControl);
+      var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+      map.addControl(navControl);
+      var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
+      map.addControl(overviewControl);
+    }
+    var map;
+      initMap();
+  </script>
+</html> 
